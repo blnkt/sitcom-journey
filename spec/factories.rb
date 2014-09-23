@@ -3,7 +3,7 @@ FactoryGirl.define do
     youtube_id "F3jk3pflofk"
     user_id 1
     start_time "2:56"
-    end_time "3:06"
+    end_time "3:07"
   end
 
   # factory :adventure do
