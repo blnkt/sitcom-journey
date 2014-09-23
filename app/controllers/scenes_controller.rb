@@ -6,19 +6,32 @@ class ScenesController < ApplicationController
   end
 
   def new
-    @scenes = Scene.all
     @scene = Scene.new()
   end
 
   def create
-    @scenes = Scene.all
     @scene = Scene.new(scene_params)
+    @scene.user_id = current_user.id
     if @scene.save
-      flash[:notice] = "scene"
+      flash[:notice] = "scene added"
       redirect_to scenes_path
     else
-      flash[:notice] = "Scene cannot be blank."
       render 'new'
+    end
+  end
+
+  def edit
+    @scene = Scene.find(params[:id])
+    render 'edit'
+  end
+
+  def update
+    @scene = Scene.find(params[:id])
+    if @scene.update(scene_params)
+      flash[:notice] = "scene updated"
+      redirect_to scenes_path
+    else
+      render 'edit'
     end
   end
 
@@ -29,7 +42,7 @@ class ScenesController < ApplicationController
 
 private
   def scene_params
-    params.require(:scene).permit(:user_id, :address, :start, :end)
+    params.require(:scene).permit(:user_id, :youtube_id, :start_time, :end_time)
   end
 end
 

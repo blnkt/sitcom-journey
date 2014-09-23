@@ -6,10 +6,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="http://www.youtube.com/player_api"></script>
+  <script src="/app/assets/javascripts/fancybox.js"></script>
+  <script src="/app/assets/javascripts/nextvid.js"></script>
+
 </head>
 <body>
   <div class="container">
-    <h2> Sitcom Journey </h2>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <h2>Sitcom Journeys</h2>
+      </div>
+      <div class="navbar-right">
+        <ul class="navbar-right">
+          <% if user_signed_in? %>
+            <%= link_to "sign out", destroy_user_session_path, method: "delete", class: "btn-sm btn-default pull-right" %>
+            <%= link_to 'edit account', edit_user_registration_path, class: "btn-sm btn-default pull-right" %>
+            <%= link_to "#{current_user.name}'s Profile", user_path(current_user), class: "btn-sm btn-default pull-right" %>
+          <% else %>
+            <%= link_to "sign up", new_user_registration_path, class: "btn-sm btn-default pull-right" %>
+            <%= link_to "login", new_user_session_path, class: "btn-sm btn-default pull-right" %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
     <%= yield %>

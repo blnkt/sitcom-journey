@@ -4,4 +4,5 @@ class Plot < ActiveRecord::Base
   validates_presence_of :user_id
 
   has_and_belongs_to_many :scenes
+  belongs_to :user
 end

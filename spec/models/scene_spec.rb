@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe Scene do
   it { should have_and_belong_to_many :plots}
+  it { should belong_to :user}
 
   it { should validate_presence_of :start_time }
   it { should validate_presence_of :end_time }
@@ -21,5 +22,3 @@ describe Scene do
     end
   end
 end
-
-http://youtu.be/jo34VhfcetU

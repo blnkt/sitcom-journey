@@ -1,0 +1,10 @@
+<%= render("layouts/errors", object: @scene) %>
+<%= form_for @scene do |f| %>
+  <%= f.label 'youtube id' %>
+  <%= f.text_field :youtube_id %>
+  <%= f.label "start time in seconds" %>
+  <%= f.text_field :start_time %>
+  <%= f.label "end time in seconds" %>
+  <%= f.text_field :end_time %>
+  <%= f.submit class: "btn btn-info" %>
+<% end %>
