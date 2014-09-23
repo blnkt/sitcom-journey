@@ -17,7 +17,7 @@ describe Scene do
 
   describe "#clip" do
     it "synthesize youtube embed url from youtube_id, start, and end" do
-      expect(@@scene.clip).to eq("http://www.youtube.com/embed/#{@@scene.youtube_id}?start=#{@@scene.start_time}&end=#{@@scene.end_time}&autoplay=1")
+      expect(@@scene.clip).to eq("http://www.youtube.com/embed/#{@@scene.youtube_id}?start=#{@@scene.start_time}&end=#{@@scene.end_time}&autoplay=1&enablejsapi=1")
     end
   end
 end

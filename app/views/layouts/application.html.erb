@@ -8,9 +8,11 @@
   <script src="http://www.youtube.com/player_api"></script>
 </head>
 <body>
-<%= flash[:notice] %>
-<%= flash[:alert] %>
-<%= yield %>
-
+  <div class="container">
+    <h2> Sitcom Journey </h2>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <%= yield %>
+  </div>
 </body>
 </html>

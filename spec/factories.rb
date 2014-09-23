@@ -6,10 +6,13 @@ FactoryGirl.define do
     end_time "3:07"
   end
 
-  # factory :adventure do
-  #   title 'the raven flies at midnight'
-  #   user_id 1
-  # end
+  factory :plot do
+    title 'the contest'
+    show_name 'Seinfeld'
+    season '4'
+    episode '18'
+    user_id 1
+  end
 
   # factory :chapter do
   #   prompt 'unexpected astronaut'

@@ -8,7 +8,7 @@ class Scene < ActiveRecord::Base
   before_create :to_seconds
 
   def clip
-    return "http://www.youtube.com/embed/#{self.youtube_id}?start=#{self.start_time}&end=#{self.end_time}&autoplay=1"
+    "http://www.youtube.com/embed/#{self.youtube_id}?start=#{self.start_time}&end=#{self.end_time}&autoplay=1&enablejsapi=1"
   end
 
   private
