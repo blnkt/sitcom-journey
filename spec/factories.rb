@@ -14,8 +14,9 @@ FactoryGirl.define do
     user_id 1
   end
 
-  # factory :chapter do
-  #   prompt 'unexpected astronaut'
-  #   episode 'no one ever expects the unexpected astronaut'
-  # end
+  factory :user do
+    name 'blanks'
+    email 'blank@et.com'
+    password 'password'
+    password_confirmation 'password'
 end
