@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923174558) do
+ActiveRecord::Schema.define(version: 20140923184835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20140923174558) do
   end
 
   create_table "scenes", force: true do |t|
-    t.string  "address"
-    t.string  "start"
-    t.string  "end"
+    t.string  "youtube_id"
+    t.string  "start_time"
+    t.string  "end_time"
     t.integer "user_id"
   end
 
