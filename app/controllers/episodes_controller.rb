@@ -6,7 +6,6 @@ class EpisodesController < ApplicationController
   end
 
   def new
-    @plot = Plot.find(params[:plot_id])
     @episode = Episode.new()
   end
 
@@ -42,12 +41,15 @@ class EpisodesController < ApplicationController
 
   def show
     @episode = Episode.find(params[:id])
+    @scenes = @episode.scrambler
+    gon.scenes = @scenes
+    binding.pry
   end
 
 
 private
   def episode_params
-    params.require(:episode).permit(:user_id, :youtube_id, :start_time, :end_time)
+    params.require(:episode).permit(:user_id, :title)
   end
 end
 

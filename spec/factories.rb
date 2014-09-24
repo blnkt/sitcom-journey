@@ -14,6 +14,11 @@ FactoryGirl.define do
     user_id 1
   end
 
+  factory :episode do
+    title 'the test'
+    user_id 1
+  end
+
   factory :user do
     name 'blanks'
     email 'blank@et.com'
