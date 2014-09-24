@@ -43,7 +43,6 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id])
     @scenes = @episode.scrambler
     gon.scenes = @scenes
-    binding.pry
   end
 
 

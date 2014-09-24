@@ -36,7 +36,7 @@ function onPlayerStateChange(event){
   console.log('player state changed');
   if(event.data === YT.PlayerState.PLAYING){
     console.log('playing')
-    console.log(scenes);
+    console.log(currentScene);
   }
   if(event.data === YT.PlayerState.ENDED){
     console.log('ended')
