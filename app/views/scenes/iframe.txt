@@ -1,2 +1,0 @@
-  <iframe id="ytplayer" type="text/html" width="640" height="360"
-src=<%= scene.clip %> frameborder="0" allowfullscreen>
