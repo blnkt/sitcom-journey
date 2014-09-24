@@ -4,6 +4,7 @@ class Plot < ActiveRecord::Base
   validates_presence_of :user_id
 
   has_and_belongs_to_many :scenes
+  has_and_belongs_to_many :episodes
   belongs_to :user
 
   def loadCode
