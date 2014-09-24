@@ -20,6 +20,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'therubyracer'
   gem 'rspec-rails'
   gem 'pry'
   gem 'database_cleaner'

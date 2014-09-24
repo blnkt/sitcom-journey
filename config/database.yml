@@ -17,12 +17,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
+  database: postgres
+  username: postgres
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
 development:
   <<: *default
+
   database: sitcom_journey_development
 
   # The specified database role being used to connect to postgres.
@@ -80,6 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: sitcom_journey_production
-  username: sitcom_journey
   password: <%= ENV['SITCOM_JOURNEY_DATABASE_PASSWORD'] %>

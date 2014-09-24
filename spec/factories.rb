@@ -19,4 +19,5 @@ FactoryGirl.define do
     email 'blank@et.com'
     password 'password'
     password_confirmation 'password'
+  end
 end
