@@ -1,3 +1,52 @@
+<div class="btn-group">
+  <%= link_to "new scene", new_plot_scene_path(@plot), class: "btn btn-default" %>
+  <%= link_to "Plots", plots_path, class: "btn btn-danger"%>
+</div>
+<br>
 <%= render @scenes %>
-<%= link_to "new scene", new_plot_scene_path(@plot), class: "btn btn-default" %>
-<%= link_to "Plots", plots_path, class: "btn btn-danger"%>
+<br>
+<div class="embed-box">
+  <iframe id="player" src="<%= @scenes.first.clip %>" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script>
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+var scenes = gon.scenes;
+var currentScene = gon.scenes[1]
+
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('player', {
+    height: 315,
+    width: 560,
+    playerVars: {'rel': 0, 'showinfo': 0, 'hidecontrols': 1 },
+    events : {
+      'onReady' : onPlayerReady
+    }
+  });
+}
+
+function onPlayerReady(event){
+  player.addEventListener('onStateChange', onPlayerStateChange);
+  console.log(YT.PlayerState);
+    event.target.playVideo();
+}
+function onPlayerStateChange(event){
+  console.log('player state changed');
+  if(event.data === YT.PlayerState.PLAYING){
+    console.log('playing')
+    console.log(scenes);
+  }
+  if(event.data === YT.PlayerState.ENDED){
+    console.log('ended')
+    currentScene = scenes[scenes.indexOf(currentScene) + 1]
+    player.loadVideoById({videoId:currentScene.youtube_id, startSeconds:currentScene.start_time, endSeconds:currentScene.end_time});
+  }
+}
+
+</script>
+

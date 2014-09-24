@@ -1,2 +1,6 @@
 <h4><%= plot.show_name %>: Season <%= plot.season %>, Episode <%= plot.episode %></h4>
-<%= link_to plot.title, plot_path(plot), class: "btn btn-primary" %>
+<% unless plot.scenes == [] %>
+  <%= link_to plot.title, plot_path(plot), class: "btn btn-primary" %>
+<% else %>
+  <%= link_to plot.title, new_plot_scene_path(plot), class: "btn btn-default" %>
+<% end %>

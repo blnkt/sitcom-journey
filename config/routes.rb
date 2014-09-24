@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: "plots#index"
+  root to: "episodes#index"
   resources :episodes
   resources :users, only: :show
   resources :scenes, only: [:show]

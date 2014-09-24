@@ -23,6 +23,7 @@ class PlotsController < ApplicationController
   def show
     @plot = Plot.find(params[:id])
     @scenes = @plot.scenes
+    gon.scenes = @scenes
   end
 
 private
