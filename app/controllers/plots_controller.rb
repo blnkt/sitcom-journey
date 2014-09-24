@@ -6,28 +6,27 @@ class PlotsController < ApplicationController
   end
 
   def new
-    @plots = Plot.all
     @plot = Plot.new()
   end
 
   def create
-    @plots = Plot.all
     @plot = Plot.new(plot_params)
+    @plot.user_id = current_user.id
     if @plot.save
       flash[:notice] = "plot"
-      redirect_to plots_path
+      redirect_to plots_path(@plot)
     else
-      flash[:notice] = "Plot cannot be blank."
       render 'new'
     end
   end
 
   def show
     @plot = Plot.find(params[:id])
+    @scenes = @plot.scenes
   end
 
 private
-  def scene_params
+  def plot_params
     params.require(:plot).permit(:user_id, :title, :show_name, :season, :episode)
   end
 end

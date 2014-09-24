@@ -1,0 +1,11 @@
+<%= form_for @plot do |f| %>
+  <%= f.label :show_name %>
+  <%= f.text_field :show_name %>
+  <%= f.label :season %>
+  <%= f.text_field :season %>
+  <%= f.label :episode %>
+  <%= f.text_field :episode %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit class: "btn btn-info" %>
+<% end %>

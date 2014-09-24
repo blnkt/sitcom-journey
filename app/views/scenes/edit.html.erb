@@ -1,5 +1,5 @@
 <%= render("layouts/errors", object: @scene) %>
-<%= form_for @scene do |f| %>
+<%= form_for [@plot, @scene] do |f| %>
   <%= f.label 'youtube id' %>
   <%= f.text_field :youtube_id %>
   <%= f.label "start time in seconds" %>

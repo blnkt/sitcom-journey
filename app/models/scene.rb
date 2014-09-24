@@ -7,7 +7,7 @@ class Scene < ActiveRecord::Base
   has_and_belongs_to_many :plots
   belongs_to :user
 
-  before_create :to_seconds
+  before_save :to_seconds
 
   def clip
     "http://www.youtube.com/embed/#{self.youtube_id}?start=#{self.start_time}&end=#{self.end_time}&autoplay=1&enablejsapi=1"

@@ -6,30 +6,35 @@ class ScenesController < ApplicationController
   end
 
   def new
+    @plot = Plot.find(params[:plot_id])
     @scene = Scene.new()
   end
 
   def create
+    @plot = Plot.find(params[:plot_id])
     @scene = Scene.new(scene_params)
     @scene.user_id = current_user.id
     if @scene.save
+      @plot.scenes << @scene
       flash[:notice] = "scene added"
-      redirect_to scenes_path
+      redirect_to plot_path(@plot)
     else
       render 'new'
     end
   end
 
   def edit
+    @plot = Plot.find(params[:plot_id])
     @scene = Scene.find(params[:id])
     render 'edit'
   end
 
   def update
+    @plot = Plot.find(params[:plot_id])
     @scene = Scene.find(params[:id])
     if @scene.update(scene_params)
       flash[:notice] = "scene updated"
-      redirect_to scenes_path
+      redirect_to plot_path(@plot)
     else
       render 'edit'
     end

@@ -2,6 +2,6 @@
   <div>
     <%= scene.start_time + "--" + scene.end_time %>
     <a class="fancybox fancybox.iframe" href=<%= scene.clip %>>Video<%= scene.id %></a>
-    <%= link_to "edit", edit_scene_path(scene) %>
+    <%= link_to "edit", edit_plot_scene_path(@plot, scene) %>
   </div>
 </div>
