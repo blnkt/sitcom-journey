@@ -7,6 +7,7 @@ class EpisodesController < ApplicationController
 
   def new
     @episode = Episode.new()
+    @show_names = Plot.all.map {|plot| plot.show_name}
   end
 
   def create

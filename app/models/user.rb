@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :plots
   has_many :scenes
+  has_many :episodes
 
   validates :name, presence: true, uniqueness: true
 end

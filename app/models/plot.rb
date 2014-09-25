@@ -17,6 +17,10 @@ class Plot < ActiveRecord::Base
 
   def self.random_pair
     a_and_b = [Plot.where(aplot: true).limit(1).order("RANDOM()"), Plot.where(bplot: true).limit(1).order("RANDOM()")]
-    return a_and_b
+    if Episode.all_plot_pairs.include?([a_and_b.first.first.id, a_and_b.last.first.id])
+      Plot.random_pair
+    else
+      return a_and_b
+    end
   end
 end

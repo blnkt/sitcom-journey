@@ -19,11 +19,15 @@ class Episode < ActiveRecord::Base
 
   def plotter
     a_and_b = Plot.random_pair
-    self.update(title: "#{a_and_b.first.first.title} + #{a_and_b.last.first.title}")
-    a_and_b.each { |plot| self.plots << plot }
+    unless Episode.all_plot_pairs.include?(a_and_b)
+      self.update(title: "#{a_and_b.first.first.title} + #{a_and_b.last.first.title}")
+      a_and_b.each { |plot| self.plots << plot }
+    else
+      self.plotter
+    end
   end
 
   def self.all_plot_pairs
-    Episode.all.map { |episode| episode.plots }
+    Episode.all.map { |episode| episode.plots.map { |plot| plot.id } }
   end
 end

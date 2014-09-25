@@ -10,6 +10,7 @@ describe Episode do
     @plot2 = FactoryGirl.create(:plot, episode: 19)
     @episode = FactoryGirl.create(:episode)
   end
+
   it { should have_and_belong_to_many :plots}
   it { should belong_to :user}
 
