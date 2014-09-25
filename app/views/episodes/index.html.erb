@@ -1,2 +1,14 @@
-<%= link_to 'Create Random Episode', episodes_path, class: "btn btn-warning" %>
-<%= render @episodes %>
+<div class="row">
+  <div class="col-md-3">
+    <%= button_to 'Create Random Episode', {controller: "random_episodes", action: "create"}, class: "btn btn-warning" %>
+  </div>
+  <div class="col-md-3">
+    <%= link_to 'Create Qualified Episode', {controller: "episodes", action: "new"}, class: "btn btn-success" %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="panel panel-default col-md-6">
+    <%= render @episodes %>
+  </div>
+</div>

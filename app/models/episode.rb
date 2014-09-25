@@ -10,11 +10,20 @@ class Episode < ActiveRecord::Base
   end
 
   def bplot
-    bplot = self.plots.last.scenes
+    self.plots.last.scenes
   end
 
   def scrambler
     self.aplot.zip(self.bplot).flatten.compact
   end
 
+  def plotter
+    a_and_b = Plot.random_pair
+    self.update(title: "#{a_and_b.first.first.title} + #{a_and_b.last.first.title}")
+    a_and_b.each { |plot| self.plots << plot }
+  end
+
+  def self.all_plot_pairs
+    Episode.all.map { |episode| episode.plots }
+  end
 end

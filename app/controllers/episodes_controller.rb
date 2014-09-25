@@ -13,9 +13,8 @@ class EpisodesController < ApplicationController
     @episode = Episode.new(episode_params)
     @episode.user_id = current_user.id
     if @episode.save
-      @plot.episodes << @episode
       flash[:notice] = "episode added"
-      redirect_to plot_path(@plot)
+      redirect_to episode_path(@episode)
     else
       render 'new'
     end
