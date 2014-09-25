@@ -1,2 +1,39 @@
-<%= render @plots %>
-<p><%= link_to "New Plot", new_plot_path %></p>
+<div class="row">
+  <div class="btn-group">
+    <%= link_to "New Plot", new_plot_path, class: "btn btn-default" %>
+    <%= link_to "Back to Episodes", episodes_path, class: "btn btn-danger" %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <% @show_names.uniq.each do |show| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= show %>
+        </h3>
+      </div>
+    </div>
+      <% @seasons.uniq.each do |season| %>
+        <div class="panel panel-default col-md-6">
+          <div class="panel-heading">
+            <div class="panel-title">
+              Season <%= season %>
+            </div>
+          </div>
+          <ul class="list-group">
+            <% @episodes.uniq.each do |episode| %>
+              <% if Plot.exists?(show_name: show, season: season, episode: episode) %>
+                <li class="list-group-item"><h5>Episode <%= episode %></h5></li>
+              <% end %>
+              <li class="list-group-item">
+                <ul class="list-group">
+                  <%= render @plots.where(show_name: show, season: season, episode: episode) %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  <% end %>
+</div>

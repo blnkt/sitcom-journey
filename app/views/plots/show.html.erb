@@ -1,9 +1,13 @@
-<div class="btn-group">
-  <%= link_to "new scene", new_plot_scene_path(@plot), class: "btn btn-default" %>
-  <%= link_to "Plots", plots_path, class: "btn btn-danger"%>
+<div class="row">
+  <div class="btn-group">
+    <%= link_to "new Scene", new_plot_scene_path(@plot), class: "btn btn-default" %>
+    <%= link_to "Back to Plots", plots_path, class: "btn btn-danger"%>
+  </div>
 </div>
 <br>
-<%= render @scenes %>
+<div class="row">
+  <%= render @scenes %>
+</div>
 <br>
 <div class="embed-box">
   <iframe id="player" src="<%= @scenes.first.clip %>" frameborder="0" allowfullscreen></iframe>

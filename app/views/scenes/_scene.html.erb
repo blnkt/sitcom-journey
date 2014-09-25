@@ -1,7 +1,7 @@
-<div class="row">
-  <div>
-    <%= scene.start_time + "--" + scene.end_time %>
-    <a class="fancybox fancybox.iframe" href=<%= scene.clip %>>Video<%= scene.id %></a>
-    <%= link_to "edit", edit_plot_scene_path(@plot, scene) %>
+<div class="panel panel-default col-md-6">
+  <div class="panel-body">
+    <%= link_to "Scene #{scene.id} starts at #{scene.start_time} seconds and ends at #{scene.end_time} seconds", scene_path(scene), class: "btn btn-block btn-default" %>
+    <a href=<%= scene.clip %> class="btn btn-block btn-info">Watch on Youtube</a>
+    <%= link_to "edit", edit_plot_scene_path(@plot, scene), class: "btn btn-block btn-warning" %>
   </div>
 </div>

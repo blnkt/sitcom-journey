@@ -14,4 +14,9 @@ class Plot < ActiveRecord::Base
     end
     return api_formatted_scenes
   end
+
+  def random_pair
+    Plot.where(aplot: true).limit(1).order("RANDOM()")
+    Plot.where(bplot: true).limit(1).order("RANDOM()")
+  end
 end

@@ -3,6 +3,9 @@ class PlotsController < ApplicationController
 
   def index
     @plots = Plot.all
+    @show_names = @plots.map {|plot| plot.show_name}
+    @seasons = @plots.map {|plot| plot.season}
+    @episodes = @plots.map {|plot| plot.episode}
   end
 
   def new

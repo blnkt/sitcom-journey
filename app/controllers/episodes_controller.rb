@@ -10,7 +10,6 @@ class EpisodesController < ApplicationController
   end
 
   def create
-    @plot = Plot.find(params[:plot_id])
     @episode = Episode.new(episode_params)
     @episode.user_id = current_user.id
     if @episode.save
